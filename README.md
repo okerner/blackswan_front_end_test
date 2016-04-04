@@ -1,13 +1,19 @@
 # blackswan_front_end_test
-The Test
+
+**The Test**
+
 Create a JavaScript / Coffeescript application using AngularJS that will allow a user to search a repository by name and display a repository's relevant information such as URL, description, forks count, stargazers count, open issues count etc. Also, display the available issues of a repository in a separate section in the UI:
-Implement the best design possible for the user interface - search and search results, and issues section.
-You can use Twitter Bootstrap and any JavaScript libraries to support AngularJS (Underscore etc). Use best practices in writing JavaScript / Coffeescript, CSS, and HTML. Write clearly and use proper MVC structure to write the application.
-Bonus: Add another section for visualisation chart (using a JavaScript charting library that you already know) for the number of forks, open issues, stargazer count, watchers count, or any relevant information about the repository.
-Relevant Links
-Description	URL
-Sample API URL to search by repository name	https://api.github.com/search/repositories?q=bootstrap
-API URL to display issues of a repository name	https://api.github.com/search/issues?q=repo:username/reponame
-Example: Display Issues of Bootstrap	https://api.github.com/search/issues?q=repo:twbs/bootstrap
-API Documentation	https://developer.github.com/v3/search/#search-issues
-GItHub Search API Documentation	https://developer.github.com/v3/search/
+
+- Implement the best design possible for the user interface - search and search results, and issues section.
+- You can use Twitter Bootstrap and any JavaScript libraries to support AngularJS (Underscore etc). Use best practices in writing JavaScript / Coffeescript, CSS, and HTML. Write clearly and use proper MVC structure to write the application.
+- Bonus: Add another section for visualisation chart (using a JavaScript charting library that you already know) for the number of forks, open issues, stargazer count, watchers count, or any relevant information about the repository.
+
+**Relevant Links**
+
+| Description | URL |
+| --- | --- |
+| Sample API URL to search by repository name | [https://api.github.com/search/repositories?q=bootstrap](https://api.github.com/search/repositories?q=bootstrap) |
+| API URL to display issues of a repository name | [https://api.github.com/search/issues?q=repo:username/reponame](https://api.github.com/search/issues?q=repo:username/reponame) |
+| Example: Display Issues of Bootstrap | [https://api.github.com/search/issues?q=repo:twbs/bootstrap](https://api.github.com/search/issues?q=repo:twbs/bootstrap) |
+| API Documentation | [https://developer.github.com/v3/search/#search-issues](https://developer.github.com/v3/search/#search-issues) |
+| GItHub Search API Documentation | [https://developer.github.com/v3/search/](https://developer.github.com/v3/search/) |
