@@ -1,0 +1,55 @@
+body {
+    padding-top: 60px;
+}
+
+h3 {
+    margin-top: 0px;
+}
+
+h3 a {
+    color: #4078c0;
+}
+
+.row {
+    margin-top: 15px;
+}
+
+.col-xs-12 {
+    padding-bottom: 5px;
+    margin-top: 5px;
+}
+
+.with_border {
+    border-bottom: 1px solid #eee;
+}
+
+.show_issues {
+    cursor: pointer;
+}
+
+.col-xs-14 {
+    padding-bottom: 70px;
+}
+
+.col-xs-14.issues .col-xs-6 {
+    padding-left: 0px;
+}
+
+.col-xs-14.issues {
+    padding-left: 0px;
+}
+
+.issues {
+    padding-left: 40px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.issues a {
+    color: #000;
+}
+
+.graphs {
+    cursor: pointer;
+}
+

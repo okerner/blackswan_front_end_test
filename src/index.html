@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" ng-app="GithubSearchApp">
+  <head>
+    <title>Github search example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/jquery-2.2.2.min.js"></script>
+    <script src="/js/fusioncharts.js"></script>
+    <script src="/js/fusioncharts.charts.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-fusioncharts.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/directives.js"></script>
+  </head>
+  <body>
+    <div class="container" ng-controller="SearchController">
+      <div class="page-header">
+        <h1>Github search example</h1>
+      </div>
+      <div class="row">
+        <form method="post" ng-submit="search(text)">
+          <div class="input-append span7">
+            <label for="search_text">Repository name:</label>
+            <input id="search_text" type="text" class="span6" ng-model="text" placeholder="Repo name">
+            <input type="submit" class="span2 btn btn-primary" value="Search repo" ng-disabled="!text">
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div ng-show="semafors.show_ajax_loader" my-spinner></div>
+      </div>
+      <div class="row" ng-show="semafors.show_repos">
+        <div class="col-xs-14">
+          <div class="col-xs-6">
+            <strong>Repository name</strong>
+          </div>
+          <div class="col-xs-1">
+            <strong>Number of stargazers</strong>
+          </div>
+          <div class="col-xs-1">
+            <strong>Number of forks</strong>
+          </div>
+          <div class="col-xs-1">
+            <strong>Number of watchers</strong>
+          </div>
+          <div class="col-xs-3">
+            <strong>Number of open issues</strong>
+          </div>
+        </div>
+        <div ng-repeat="repo in repos.items" class="row show-grid">
+          <div class="col-xs-6">
+            <h3><a href="{{repo.owner.html_url}}" target="_blank">{{repo.owner.login}}</a> / <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></h3>
+          </div>
+          <div class="col-xs-1" title="Stargazers">
+            <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-0.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14l4.33-2.33 4.33 2.33L10.4 9.26 14 6z"></path></svg>
+            {{repo.stargazers_count}}
+          </div>
+          <div class="col-xs-1" title="Forks">
+            <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M10 5c0-1.11-0.89-2-2-2s-2 0.89-2 2c0 0.73 0.41 1.38 1 1.72v0.3c-0.02 0.52-0.23 0.98-0.63 1.38s-0.86 0.61-1.38 0.63c-0.83 0.02-1.48 0.16-2 0.45V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.53-0.2-1-0.53-1.36 0.09-0.06 0.48-0.41 0.59-0.47 0.25-0.11 0.56-0.17 0.94-0.17 1.05-0.05 1.95-0.45 2.75-1.25s1.2-1.98 1.25-3.02h-0.02c0.61-0.36 1.02-1 1.02-1.73zM2 1.8c0.66 0 1.2 0.55 1.2 1.2s-0.55 1.2-1.2 1.2-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2z m0 12.41c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m6-8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+            {{repo.forks_count}}
+          </div>
+          <div class="col-xs-1" title="Watchers">
+            <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6c4.94 0 7.94-6 7.94-6S13 2 8.06 2z m-0.06 10c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4z m2-4c0 1.11-0.89 2-2 2s-2-0.89-2-2 0.89-2 2-2 2 0.89 2 2z"></path></svg>
+            {{repo.watchers_count}}
+          </div>
+          <div class="col-xs-3 show_issues" title="Issues" ng-show="repo.open_issues_count" ng-click="get_issues(repo.full_name,repo.id)">
+            <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z m1 3H6v5h2V4z m0 6H6v2h2V10z"></path></svg>
+            Issues <span class="badge">{{repo.open_issues_count}}</span>
+            <span ng-class="semafors.show_arrow_down[repo.id] ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'"></span>
+            <div ng-show="semafors.show_ajax_loader_small[repo.id]" my-spinner-small></div>
+          </div>
+          <div class="col-xs-12 with_border">
+            {{repo.description}}
+          </div>
+          <div class="col-xs-12" ng-show="repo_and_issues[repo.id]">
+            <div class="col-xs-14 issues">
+              <div class="col-xs-6">
+                <h4>Issues</h4>
+              </div>
+            </div>
+            <div ng-repeat="issue in repo_and_issues[repo.id].items" class="row show-grid with_border issues">
+              <div class="col-xs-8">
+                <a href="{{issue.html_url}}" target="_blank"><strong>{{issue.title}}</strong></a>
+              </div>
+              <div class="col-xs-4">
+                <svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 2H1c-0.55 0-1 0.45-1 1v8c0 0.55 0.45 1 1 1h2v3.5l3.5-3.5h6.5c0.55 0 1-0.45 1-1V3c0-0.55-0.45-1-1-1z m0 9H6L4 13V11H1V3h12v8z"></path></svg>
+                &nbsp;{{issue.comments}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

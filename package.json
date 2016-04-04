@@ -1,0 +1,12 @@
+{
+  "name": "github-search-example",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "repository": "",
+  "author": "Orsolya Kerner <kerner.orsi@gmail.com>",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4"
+  }
+}
