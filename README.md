@@ -19,4 +19,6 @@ Create a JavaScript / Coffeescript application using AngularJS that will allow a
 | GItHub Search API Documentation | [https://developer.github.com/v3/search/](https://developer.github.com/v3/search/) |
 
 
-**The demo application should run here: [https://nodejs-practice-okerner.c9users.io/]**
+**The demo**
+
+The application should run here: https://nodejs-practice-okerner.c9users.io/**
