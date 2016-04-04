@@ -21,4 +21,4 @@ Create a JavaScript / Coffeescript application using AngularJS that will allow a
 
 **The demo**
 
-The application should run here: https://nodejs-practice-okerner.c9users.io/**
+The application should run here: https://nodejs-practice-okerner.c9users.io/
